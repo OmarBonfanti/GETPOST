@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+       <div id=div>
+           <button id="get" >get</button>
+           <button id="post" >post</button>
+       </div>
+
+       
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
+
+                <script>
+                    $("#get").on("click",() => {get();});
+                    $("#post").on("click",() => {post();});
+                </script>
+
+        <script>
+            var get = function (){
+            $.ajax({
+                url : "http://ec2-3-125-116-232.eu-central-1.compute.amazonaws.com:3000/login",
+                type : "get",
+                crossDomain :true,
+                headers:{
+                    "accept" : "appilication/json",
+                    "Access-Control-Allow-Origin" : "*"
+                },
+                data : {user: "ranieri" ,
+                        psw :  "ciao" },
+                success : function(res){
+                    console.log("successo: get " , res);
+                },
+                error : function(res){
+                    console.log("errore: " , res);
+                }
+            })
+         };
+        </script>
+
+<script>
+   var post = function (){
+     $.ajax({
+         url : "http://ec2-3-125-116-232.eu-central-1.compute.amazonaws.com:3000/login2",
+         type : "post",
+         crossDomain :true,
+         headers:{
+             "accept" : "appilication/json",
+             "Access-Control-Allow-Origin" : "*"
+         },
+         data : {user: "ranieri" ,
+                 psw :  "ciao" },
+         success : function(res){
+             console.log("successo post : " , res);
+         },
+         error : function(res){
+             console.log("errore: " , res);
+         }
+     })
+    };
+ </script>
+    </body>
+</html>
